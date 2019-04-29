@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "534141842632",
+    "firebase_url": "https://trainingapp-336db.firebaseio.com",
+    "project_id": "trainingapp-336db",
+    "storage_bucket": "trainingapp-336db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534141842632:android:8d04aac05d64c217",
+        "android_client_info": {
+          "package_name": "com.example.trainingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534141842632-2s4k20lu22mbftqp6ita8r5n0f462o0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trainingapp",
+            "certificate_hash": "6865b08038544e850b4db3ddf4afd9c69f2d7faf"
+          }
+        },
+        {
+          "client_id": "534141842632-ncvflf6q176u4og8cq2qfdt79nf7o0pu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdFqw0ud8gq8PYCyO8UYzrgi1Yv5ypIWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534141842632-ncvflf6q176u4og8cq2qfdt79nf7o0pu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

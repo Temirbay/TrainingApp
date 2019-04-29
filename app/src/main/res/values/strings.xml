@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TrainingApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_result">Result</string>
+    <string name="login">Войти</string>
+    <string name="email">E-mail</string>
+    <string name="password">Пароль</string>
+    <string name="register">Регистрироваться</string>
+    <string name="next">Далее</string>
+    <string name="your_age">Ваш возраст?</string>
+    <string name="your_height">Ваш рост?</string>
+    <string name="your_weight">Ваш вес?</string>
+    <string name="need_weight">Желаемый вес</string>
+    <string name="your_progress">Ваш прогнозируемый прогресс</string>
+</resources>

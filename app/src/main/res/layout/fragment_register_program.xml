@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/your_progress"
+        android:textColor="@color/textColorDark"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:layout_marginTop="128dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/layoutMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="64dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/label">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2 МЕСЯЦ"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textColor="@color/textColorDark"/>
+
+        <Button
+            android:id="@+id/bnMedium"
+            android:background="@drawable/background_green_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="СРЕДНИЙ"
+            android:textColor="@color/textColorLight"
+            android:textSize="24sp"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="64dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/layoutMedium">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4 МЕСЯЦ"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textColor="@color/textColorDark"/>
+
+        <Button
+            android:id="@+id/bnHard"
+            android:background="@drawable/background_green_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ПРОДВИНУТЫЙ"
+            android:textColor="@color/textColorLight"
+            android:textSize="24sp"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
