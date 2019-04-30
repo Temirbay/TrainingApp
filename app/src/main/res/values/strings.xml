@@ -15,4 +15,7 @@
     <string name="your_weight">Ваш вес?</string>
     <string name="need_weight">Желаемый вес</string>
     <string name="your_progress">Ваш прогнозируемый прогресс</string>
+    <string name="signout">Выйти</string>
+    <string name="name">Имя</string>
+    <string name="finish_trainings">Завершите следующих упражнений как можно быстрее</string>
 </resources>

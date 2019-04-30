@@ -1,6 +1,7 @@
 package com.example.trainingapp;
 
 import android.app.Application;
+
 import com.google.firebase.FirebaseApp;
 
 public class App extends Application {
@@ -11,3 +12,4 @@ public class App extends Application {
         FirebaseApp.initializeApp(getApplicationContext());
     }
 }
+

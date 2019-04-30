@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.trainingapp.R;
-import com.example.trainingapp.model.CurrentUser;
+import com.example.trainingapp.core.model.CurrentUser;
 
 public class RegisterGenderFragment extends Fragment {
 

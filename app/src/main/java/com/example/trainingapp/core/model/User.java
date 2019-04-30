@@ -1,6 +1,18 @@
-package com.example.trainingapp.model;
+package com.example.trainingapp.core.model;
 
 public class User {
+    public String login;
+    public String password;
+    public Integer age;
+    public String gender;
+    public Integer height;
+    public Integer weight;
+    public Integer needWeight;
+    public String uuid;
+    public String program;
+    public String name;
+
+    public User() { }
 
     public User(
             String login,
@@ -10,7 +22,9 @@ public class User {
             Integer weight,
             Integer needWeight,
             String uuid,
-            String program
+            String program,
+            String name,
+            String gender
     ) {
         this.login = login;
         this.password = password;
@@ -20,14 +34,8 @@ public class User {
         this.needWeight = needWeight;
         this.uuid = uuid;
         this.program = program;
+        this.name = name;
+        this.gender = gender;
     }
 
-    public String login;
-    public String password;
-    public Integer age;
-    public Integer height;
-    public Integer weight;
-    public Integer needWeight;
-    public String uuid;
-    public String program;
 }

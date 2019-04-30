@@ -1,6 +1,5 @@
 package com.example.trainingapp.auth.register;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.trainingapp.R;
-import com.example.trainingapp.main.MainActivity;
-import com.example.trainingapp.model.CurrentUser;
+import com.example.trainingapp.core.model.CurrentUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

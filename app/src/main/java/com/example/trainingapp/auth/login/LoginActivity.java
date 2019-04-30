@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -30,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @BindView(R.id.bnRegister)
     TextView bnRegister;
+
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +62,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void login() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (login.getText().toString().equals("") || password.getText().toString().equals("")) return;
+        showProgress();
         auth.signInWithEmailAndPassword(login.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             onLoginSucceed();
+                            hideProgress();
                         } else {
                             onLoginFailed(task.getException());
+                            hideProgress();
                         }
                     }
                 });
@@ -98,4 +106,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
+
+    private void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
 }

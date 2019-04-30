@@ -1,8 +1,9 @@
 package com.example.trainingapp.auth.register;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
 import com.example.trainingapp.R;
 
 public class RegisterActivity extends AppCompatActivity {

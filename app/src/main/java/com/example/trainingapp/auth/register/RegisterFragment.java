@@ -9,17 +9,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 import com.example.trainingapp.R;
-import com.example.trainingapp.auth.repository.AuthRepository;
+import com.example.trainingapp.core.model.CurrentUser;
+import com.example.trainingapp.core.model.User;
 import com.example.trainingapp.main.MainActivity;
-import com.example.trainingapp.model.CurrentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.*;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.FirebaseDatabase;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class RegisterFragment extends Fragment {
 
@@ -29,9 +37,14 @@ public class RegisterFragment extends Fragment {
     @BindView(R.id.password)
     TextView password;
 
+    @BindView(R.id.name)
+    TextView name;
+
     @BindView(R.id.bnRegister)
     Button bnRegister;
 
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -53,8 +66,10 @@ public class RegisterFragment extends Fragment {
             public void onClick(View v) {
                 String loginString = login.getText().toString();
                 String passwordString = password.getText().toString();
-                if (!loginString.equals("") && !passwordString.equals(""))
+                if (!loginString.equals("") && !passwordString.equals("")) {
+                    showProgress();
                     register(loginString, passwordString);
+                }
             }
         });
     }
@@ -67,8 +82,11 @@ public class RegisterFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             onRegisterSucceed();
+                            hideProgress();
+
                         } else {
                             onRegisterFailed(task.getException());
+                            hideProgress();
                         }
                     }
                 });
@@ -77,8 +95,11 @@ public class RegisterFragment extends Fragment {
     private void onRegisterSucceed() {
         CurrentUser.login = login.getText().toString();
         CurrentUser.password = password.getText().toString();
+        CurrentUser.name = name.getText().toString();
         CurrentUser.uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        AuthRepository.register(CurrentUser.getUserFromCurrentUser());
+        User user = CurrentUser.getUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.getReference().child("users").child(user.uuid).setValue(user);
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
     }
@@ -99,6 +120,14 @@ public class RegisterFragment extends Fragment {
         } else {
             showMessage(exception.getMessage());
         }
+    }
+
+    private void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress() {
+        progressBar.setVisibility(View.GONE);
     }
 
 }
