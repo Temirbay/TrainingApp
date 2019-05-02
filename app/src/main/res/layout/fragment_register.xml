@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+    android:background="@drawable/wallpaper"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.design.widget.TextInputLayout
@@ -16,7 +17,6 @@
 
         <android.support.design.widget.TextInputEditText
                 android:id="@+id/login"
-                android:background="@drawable/background_field"
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:paddingTop="8dp"
@@ -37,7 +37,6 @@
 
         <android.support.design.widget.TextInputEditText
                 android:id="@+id/password"
-                android:background="@drawable/background_field"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/password"
@@ -58,7 +57,6 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/name"
-            android:background="@drawable/background_field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/name"

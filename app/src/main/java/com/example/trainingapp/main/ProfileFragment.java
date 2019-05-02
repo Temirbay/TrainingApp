@@ -1,5 +1,6 @@
 package com.example.trainingapp.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -52,12 +53,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         initViews();
     }
 
+    @SuppressLint("SetTextI18n")
     private void initViews() {
         bnSignOut.setOnClickListener(this);
         bnNotifications.setOnClickListener(this);
-        height.setText(CurrentUser.height);
-        weight.setText(CurrentUser.weight);
-        needWeight.setText(CurrentUser.needWeight);
+        height.setText(CurrentUser.height.toString());
+        weight.setText(CurrentUser.weight.toString());
+        needWeight.setText(CurrentUser.needWeight.toString());
     }
 
     private void signOut() {
