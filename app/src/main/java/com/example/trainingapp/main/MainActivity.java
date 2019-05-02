@@ -82,13 +82,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
-    public void showFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentLayout, fragment)
-                .commit();
-    }
-
-
     private void getUser() {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -108,7 +101,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 });
     }
 
+    @Override
+    public void onBackPressed() {
 
+    }
 
     private void showProgress() {
         progressBar.setVisibility(View.VISIBLE);

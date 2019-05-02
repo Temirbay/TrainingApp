@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.trainingapp.R;
-import com.example.trainingapp.trainings.ExercisesActivity;
+import com.example.trainingapp.exercises.ExercisesActivity;
 import com.example.trainingapp.core.model.CurrentUser;
 
 import butterknife.BindView;
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 public class HomeFragment extends Fragment {
 
-    @BindView(R.id.trainingsLabel)
+    @BindView(R.id.nameLabel)
     TextView nameLabel;
 
     @BindView(R.id.card)

@@ -8,11 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.trainingapp.NotificationsActivity;
 import com.example.trainingapp.R;
 import com.example.trainingapp.auth.login.LoginActivity;
+import com.example.trainingapp.core.model.CurrentUser;
 import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
@@ -25,6 +27,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.bnNotifications)
     TextView bnNotifications;
+
+    @BindView(R.id.height_edit)
+    EditText height;
+
+    @BindView(R.id.weight_edit)
+    EditText weight;
+
+    @BindView(R.id.need_weight_edit)
+    EditText needWeight;
+
 
     @Nullable
     @Override
@@ -43,6 +55,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void initViews() {
         bnSignOut.setOnClickListener(this);
         bnNotifications.setOnClickListener(this);
+        height.setText(CurrentUser.height);
+        weight.setText(CurrentUser.weight);
+        needWeight.setText(CurrentUser.needWeight);
     }
 
     private void signOut() {
@@ -60,7 +75,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.bnNotifications:
-                ((MainActivity)getActivity()).showFragment(new NotificationsFragment());
+                Intent intent = new Intent(getActivity(), NotificationsActivity.class);
+                startActivity(intent);
                 break;
         }
     }

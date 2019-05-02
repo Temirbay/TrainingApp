@@ -10,18 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".trainings.ExercisesActivity"></activity>
-        <activity android:name=".auth.login.LoginActivity" />
-        <activity android:name=".auth.register.RegisterActivity" />
-        <activity
-            android:name=".main.MainActivity"
-            android:label="@string/app_name">
+        <activity android:name=".NotificationsActivity"></activity>
+        <activity android:name=".exercises.ExerciseDetailsActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".exercises.ExercisesActivity" />
+        <activity android:name=".auth.login.LoginActivity" />
+        <activity android:name=".auth.register.RegisterActivity" />
+        <activity android:name=".main.MainActivity" />
     </application>
 
 </manifest>
