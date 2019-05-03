@@ -19,4 +19,6 @@
     <string name="name">Имя</string>
     <string name="finish_trainings">Завершите следующие упражнения как можно быстрее</string>
     <string name="save">сохранить</string>
+    <string name="channel_name">notification_name</string>
+    <string name="channel_description">notification_description</string>
 </resources>

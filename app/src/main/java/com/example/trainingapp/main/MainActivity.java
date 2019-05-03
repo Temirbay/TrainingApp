@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,15 +11,13 @@ import android.widget.ProgressBar;
 
 import com.example.trainingapp.R;
 import com.example.trainingapp.auth.login.LoginActivity;
-import com.example.trainingapp.core.model.CurrentUser;
-import com.example.trainingapp.core.model.User;
+import com.example.trainingapp.model.CurrentUser;
+import com.example.trainingapp.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

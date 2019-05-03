@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.trainingapp.R;
-import com.example.trainingapp.core.model.Exercise;
+import com.example.trainingapp.model.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,11 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.Exer
                 listener.onExerciseClicked(exercise);
             }
         });
+
+        Glide.with(context)
+                .asGif()
+                .load(exercise.gif)
+                .into(exerciseViewHolder.gif);
     }
 
     @Override

@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.trainingapp.R;
-import com.example.trainingapp.core.model.Exercise;
+import com.example.trainingapp.model.Exercise;
 
 public class ExerciseDetailsActivity extends AppCompatActivity {
 

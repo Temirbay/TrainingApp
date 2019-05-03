@@ -1,4 +1,4 @@
-package com.example.trainingapp.core.model;
+package com.example.trainingapp.model;
 
 public class User {
     public String login;
@@ -11,6 +11,7 @@ public class User {
     public String uuid;
     public String program;
     public String name;
+    public String imageUrl;
 
     public User() { }
 
@@ -24,7 +25,8 @@ public class User {
             String uuid,
             String program,
             String name,
-            String gender
+            String gender,
+            String imageUrl
     ) {
         this.login = login;
         this.password = password;
@@ -36,6 +38,7 @@ public class User {
         this.program = program;
         this.name = name;
         this.gender = gender;
+        this.imageUrl = imageUrl;
     }
 
 }

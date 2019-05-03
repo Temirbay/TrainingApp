@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.trainingapp">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".NotificationsActivity"></activity>
+        <activity android:name=".notifications.NotificationsActivity" />
         <activity android:name=".exercises.ExerciseDetailsActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -23,6 +25,15 @@
         <activity android:name=".auth.login.LoginActivity" />
         <activity android:name=".auth.register.RegisterActivity" />
         <activity android:name=".main.MainActivity" />
+
+        <!-- Register the Alarm Receiver -->
+        <receiver android:name=".notifications.AlarmReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
+
 
 </manifest>

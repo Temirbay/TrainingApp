@@ -1,27 +1,51 @@
 package com.example.trainingapp.main;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.database.CursorIndexOutOfBoundsException;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.trainingapp.NotificationsActivity;
+import com.bumptech.glide.Glide;
+import com.example.trainingapp.notifications.NotificationsActivity;
 import com.example.trainingapp.R;
 import com.example.trainingapp.auth.login.LoginActivity;
-import com.example.trainingapp.core.model.CurrentUser;
+import com.example.trainingapp.model.CurrentUser;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
+
+    private final static Integer PICK_IMAGE_CODE = 1234;
+
+    @BindView(R.id.avatar)
+    CircleImageView avatar;
+
+    @BindView(R.id.addPhoto)
+    ImageView addPhoto;
 
     @BindView(R.id.bnSignOut)
     TextView bnSignOut;
@@ -60,6 +84,66 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         height.setText(CurrentUser.height.toString());
         weight.setText(CurrentUser.weight.toString());
         needWeight.setText(CurrentUser.needWeight.toString());
+        if (CurrentUser.imageUrl != null)
+            if (!CurrentUser.imageUrl.equals(""))
+                showAvatar(CurrentUser.imageUrl);
+
+        addPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Выберите фото"), PICK_IMAGE_CODE);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == PICK_IMAGE_CODE) {
+                Uri path = data.getData();
+                writeFile(path);
+            }
+        }
+    }
+
+    private void writeFile(Uri path) {
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
+        final StorageReference reference = storage.getReference().child(CurrentUser.uuid);
+        reference.putFile(path)
+                .continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (task.isSuccessful())
+                            return reference.getDownloadUrl();
+                        throw task.getException();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            CurrentUser.imageUrl = task.getResult().toString();
+                            showAvatar(task.getResult().toString());
+                            writeDownloadUrl(task.getResult());
+                        }
+                    }
+                });
+    }
+
+    private void writeDownloadUrl(Uri result) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.getReference()
+                .child("users")
+                .child(CurrentUser.uuid)
+                .child("imageUrl")
+                .setValue(result.toString());
+    }
+
+    private void showAvatar(String imageUrl) {
+        Glide.with(this).load(imageUrl).into(avatar);
     }
 
     private void signOut() {

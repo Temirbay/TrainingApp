@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.trainingapp.R;
 import com.example.trainingapp.exercises.ExercisesActivity;
-import com.example.trainingapp.core.model.CurrentUser;
+import com.example.trainingapp.model.CurrentUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

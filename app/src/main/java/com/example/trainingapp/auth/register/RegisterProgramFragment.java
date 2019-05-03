@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.trainingapp.R;
-import com.example.trainingapp.core.model.CurrentUser;
+import com.example.trainingapp.model.CurrentUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

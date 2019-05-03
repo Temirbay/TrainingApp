@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:padding="16dp"
+            app:passwordToggleEnabled="true"
             android:background="@drawable/background_field"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">

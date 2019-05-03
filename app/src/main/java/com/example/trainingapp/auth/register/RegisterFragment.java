@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.trainingapp.R;
-import com.example.trainingapp.core.model.CurrentUser;
-import com.example.trainingapp.core.model.User;
+import com.example.trainingapp.model.CurrentUser;
+import com.example.trainingapp.model.User;
 import com.example.trainingapp.main.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -97,6 +97,7 @@ public class RegisterFragment extends Fragment {
         CurrentUser.password = password.getText().toString();
         CurrentUser.name = name.getText().toString();
         CurrentUser.uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        CurrentUser.imageUrl = "";
         User user = CurrentUser.getUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database.getReference().child("users").child(user.uuid).setValue(user);

@@ -1,4 +1,4 @@
-package com.example.trainingapp.core.model;
+package com.example.trainingapp.model;
 
 public class CurrentUser {
     public static String login = null;
@@ -11,9 +11,10 @@ public class CurrentUser {
     public static String uuid = null;
     public static String program = null;
     public static String name = null;
+    public static String imageUrl = null;
 
     public static User getUser() {
-        return new User(login, password, age, height, weight, needWeight, uuid, program, name, gender);
+        return new User(login, password, age, height, weight, needWeight, uuid, program, name, gender, imageUrl);
     }
 
     public static void setUser(User user) {
@@ -27,6 +28,7 @@ public class CurrentUser {
         uuid = user.uuid;
         program = user.program;
         name = user.name;
+        imageUrl = user.imageUrl;
     }
 
 }
