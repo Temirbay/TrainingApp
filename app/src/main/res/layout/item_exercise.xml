@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="16dp"
     android:layout_margin="16dp"
+    app:cardBackgroundColor="#55FFFFFF"
+    app:cardElevation="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout

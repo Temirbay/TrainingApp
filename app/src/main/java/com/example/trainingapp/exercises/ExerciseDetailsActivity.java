@@ -1,7 +1,7 @@
 package com.example.trainingapp.exercises;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +20,9 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
     @BindView(R.id.body)
     TextView body;
 
+    @BindView(R.id.nameLabel)
+    TextView name;
+
     private Exercise exercise;
 
     @Override
@@ -31,6 +34,7 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
         if (exercise != null) {
             Glide.with(this).asGif().load(exercise.gif).into(gif);
             body.setText(exercise.body);
+            name.setText(exercise.name);
         }
     }
 }

@@ -62,6 +62,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.need_weight_edit)
     EditText needWeight;
 
+    @BindView(R.id.name)
+    TextView name;
 
     @Nullable
     @Override
@@ -81,9 +83,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void initViews() {
         bnSignOut.setOnClickListener(this);
         bnNotifications.setOnClickListener(this);
-        height.setText(CurrentUser.height.toString());
-        weight.setText(CurrentUser.weight.toString());
-        needWeight.setText(CurrentUser.needWeight.toString());
+        name.setText(CurrentUser.name);
+        height.setText(CurrentUser.height.toString() + " см");
+        weight.setText(CurrentUser.weight.toString() + " кг");
+        needWeight.setText(CurrentUser.needWeight.toString() + " кг");
         if (CurrentUser.imageUrl != null)
             if (!CurrentUser.imageUrl.equals(""))
                 showAvatar(CurrentUser.imageUrl);

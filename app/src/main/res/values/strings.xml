@@ -21,4 +21,5 @@
     <string name="save">сохранить</string>
     <string name="channel_name">notification_name</string>
     <string name="channel_description">notification_description</string>
+    <string name="notifications">Hапоминания</string>
 </resources>
