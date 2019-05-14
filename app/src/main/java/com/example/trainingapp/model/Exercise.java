@@ -21,6 +21,14 @@ public class Exercise implements Parcelable {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        Exercise exercise = (Exercise)obj;
+        return exercise.name.equals(name) &&
+                exercise.body.equals(body) &&
+                 exercise.gif.equals(gif);
+    }
+
+    @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(body);

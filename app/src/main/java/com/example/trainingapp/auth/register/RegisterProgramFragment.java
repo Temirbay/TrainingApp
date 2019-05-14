@@ -8,20 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.trainingapp.R;
 import com.example.trainingapp.model.CurrentUser;
+import com.example.trainingapp.utlis.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RegisterProgramFragment extends Fragment implements View.OnClickListener {
 
-    @BindView(R.id.bnMedium)
-    Button bnMedium;
+    @BindView(R.id.layoutMedium)
+    LinearLayout bnMedium;
 
-    @BindView(R.id.bnHard)
-    Button bnHard;
+    @BindView(R.id.layoutHard)
+    LinearLayout bnHard;
 
     @Nullable
     @Override
@@ -45,11 +47,11 @@ public class RegisterProgramFragment extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bnHard:
-                CurrentUser.program = bnHard.getText().toString();
+            case R.id.layoutHard:
+                CurrentUser.program = Constants.HARD_LEVEL;
                 break;
             case R.id.layoutMedium:
-                CurrentUser.program = bnMedium.getText().toString();
+                CurrentUser.program = Constants.MEDIUM_LEVEL;
                 break;
         }
         ((RegisterActivity)getActivity()).showFragment(new RegisterFragment());

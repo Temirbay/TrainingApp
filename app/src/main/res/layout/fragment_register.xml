@@ -75,7 +75,6 @@
             android:layout_height="match_parent"
             android:hint="@string/name"
             android:paddingTop="8dp"
-            android:inputType="textPassword"
             android:textColor="@color/textColorDark"/>
 
     </android.support.design.widget.TextInputLayout>

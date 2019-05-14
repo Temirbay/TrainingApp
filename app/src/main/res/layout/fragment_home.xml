@@ -62,7 +62,6 @@
                 android:layout_marginTop="32dp"
                 android:drawableStart="@drawable/ic_timer"
                 android:drawablePadding="4dp"
-                android:text="5 мин"
                 android:textAlignment="center"
                 android:layout_marginLeft="16dp"
                 android:drawableLeft="@drawable/ic_timer" />
@@ -79,7 +78,6 @@
                 android:layout_marginTop="32dp"
                 android:drawableStart="@drawable/ic_fitness_center"
                 android:drawablePadding="4dp"
-                android:text="10 тренировок"
                 android:textAlignment="center"
                 android:layout_marginLeft="16dp"
                 android:drawableLeft="@drawable/ic_fitness_center" />

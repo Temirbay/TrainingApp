@@ -6,9 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.trainingapp.R;
+import com.example.trainingapp.model.CurrentUser;
 import com.example.trainingapp.model.Exercise;
+import com.example.trainingapp.utlis.Constants;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +30,7 @@ import static com.example.trainingapp.exercises.ExercisesFabrique.generateExerci
 
 public class ExercisesActivity extends AppCompatActivity implements ExercisesAdapter.OnExerciseClickListener {
 
-    private List<Exercise> exercises = new ArrayList<>();
+    private ArrayList<Exercise> exercises = new ArrayList<>();
     private ExercisesAdapter adapter;
 
     @BindView(R.id.recycler)
@@ -62,6 +65,16 @@ public class ExercisesActivity extends AppCompatActivity implements ExercisesAda
                     );
                     exercises.add(exercise);
                 }
+                if (CurrentUser.program.equals(Constants.MEDIUM_LEVEL)) {
+                    ArrayList<Exercise> tempList = new ArrayList<>();
+                    tempList.addAll(exercises.subList(0, 8));
+                    exercises = tempList;
+                } else {
+                    ArrayList<Exercise> tempList = new ArrayList<>();
+                    tempList.addAll(exercises.subList(8, exercises.size()));
+                    exercises = tempList;
+                }
+                Log.d("MSG", String.valueOf(exercises.size()));
                 adapter.update(exercises);
             }
 
@@ -86,7 +99,6 @@ public class ExercisesActivity extends AppCompatActivity implements ExercisesAda
     }
 
 
-
     private void initRecycler() {
         adapter = new ExercisesAdapter(this, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -97,6 +109,7 @@ public class ExercisesActivity extends AppCompatActivity implements ExercisesAda
     public void onExerciseClicked(Exercise exercise) {
         Intent intent = new Intent(this, ExerciseDetailsActivity.class);
         intent.putExtra("exercise", exercise);
+        intent.putParcelableArrayListExtra("exercises", exercises);
         startActivity(intent);
     }
 }
