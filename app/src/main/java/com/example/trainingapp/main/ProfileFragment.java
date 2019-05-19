@@ -84,9 +84,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         bnSignOut.setOnClickListener(this);
         bnNotifications.setOnClickListener(this);
         name.setText(CurrentUser.name);
-        height.setText(CurrentUser.height.toString() + " см");
-        weight.setText(CurrentUser.weight.toString() + " кг");
-        needWeight.setText(CurrentUser.needWeight.toString() + " кг");
+        height.setText(CurrentUser.height.toString());
+        weight.setText(CurrentUser.weight.toString());
+        needWeight.setText(CurrentUser.needWeight.toString());
         if (CurrentUser.imageUrl != null)
             if (!CurrentUser.imageUrl.equals(""))
                 showAvatar(CurrentUser.imageUrl);
@@ -154,6 +154,37 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         auth.signOut();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        setData();
+    }
+
+    private void setData() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        CurrentUser.height = Integer.parseInt(height.getText().toString());
+        CurrentUser.weight = Integer.parseInt(weight.getText().toString());
+        CurrentUser.needWeight = Integer.parseInt(needWeight.getText().toString());
+        database.getReference()
+                .child("users")
+                .child(CurrentUser.uuid)
+                .child("height")
+                .setValue(Integer.parseInt(height.getText().toString()));
+
+
+        database.getReference()
+                .child("users")
+                .child(CurrentUser.uuid)
+                .child("needWeight")
+                .setValue(Integer.parseInt(needWeight.getText().toString()));
+
+        database.getReference()
+                .child("users")
+                .child(CurrentUser.uuid)
+                .child("weight")
+                .setValue(Integer.parseInt(weight.getText().toString()));
     }
 
     @Override
